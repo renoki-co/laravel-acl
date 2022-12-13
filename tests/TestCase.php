@@ -3,12 +3,11 @@
 namespace RenokiCo\LaravelAcl\Test;
 
 use Orchestra\Testbench\TestCase as Orchestra;
+use RenokiCo\LaravelAcl\LaravelAcl;
+use RenokiCo\LaravelAcl\LaravelAclServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
-    /**
-     * {@inheritdoc}
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -18,23 +17,20 @@ abstract class TestCase extends Orchestra
         $this->loadLaravelMigrations(['--database' => 'sqlite']);
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         $this->withFactories(__DIR__.'/database/factories');
+
+        LaravelAcl::resetArnables();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getPackageProviders($app)
     {
         return [
-            //
+            LaravelAclServiceProvider::class,
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getEnvironmentSetUp($app)
     {
         $app['config']->set('app.key', 'wslxrEFGWY6GfGhvN9L3wH3KSRJQQpBD');
@@ -47,11 +43,6 @@ abstract class TestCase extends Orchestra
         ]);
     }
 
-    /**
-     * Reset the database.
-     *
-     * @return void
-     */
     protected function resetDatabase()
     {
         file_put_contents(__DIR__.'/database.sqlite', null);
