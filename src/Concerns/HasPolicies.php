@@ -52,7 +52,7 @@ trait HasPolicies
     /**
      * Attach a policy to the model.
      *
-     * @param  string $name
+     * @param  string  $name
      * @param  \RenokiCo\Acl\Policy  $policy
      * @return \RenokiCo\LaravelAcl\Models\AclPolicy
      */

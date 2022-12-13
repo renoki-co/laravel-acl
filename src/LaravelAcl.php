@@ -48,7 +48,7 @@ class LaravelAcl
     /**
      * Register the given Arnable classes.
      *
-     * @param array<int, string> $arnableClasses
+     * @param  array<int, string>  $arnableClasses
      * @return void
      */
     public static function registerArnables(array $arnableClasses): void
