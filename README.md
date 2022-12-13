@@ -163,7 +163,7 @@ use RenokiCo\LaravelAcl\Concerns\HasArn;
 use RenokiCo\LaravelAcl\Contracts\Arnable;
 use RenokiCo\LaravelAcl\BuildResourceArn;
 
-class Server implements Arnable
+class Server extends Model implements Arnable
 {
     use HasArn;
 
@@ -217,7 +217,7 @@ As you have seen previously, on the actor model you can specify the account iden
 The resource ID gets resolved automatically to the model primary key, but you can override it:
 
 ```php
-class Server implements Arnable
+class Server extends Model implements Arnable
 {
     use HasArn;
 
@@ -259,7 +259,7 @@ class User extends Authenticatable implements RuledByPolicies
 Im the ARNables' case, their models should resolve the account ID of the team:
 
 ```php
-class Server implements Arnable
+class Server extends Model implements Arnable
 {
     use HasArn;
 
