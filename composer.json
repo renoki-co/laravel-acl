@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "laravel/framework": "^9.35",
+        "laravel/framework": "^9.47",
         "renoki-co/acl": "^0.4.0"
     },
     "autoload": {
